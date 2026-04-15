@@ -26,23 +26,10 @@ El sistema permite la creación visual de flujos lógicos complejos mediante **G
 
 ## Arquitectura general
 
-El sistema opera en tres capas desacopladas que se comunican de forma asíncrona:
+<p align="center">
+  <img src="image_d22d43.png" alt="Arquitectura de Ignis RPA" width="800">
+</p>
 
-```
-┌─────────────────────────────────────────┐
-│      Dashboard (Angular / Nx)           │  ← Define flujos, monitorea estado
-└───────────────┬─────────────────────────┘
-                │ HTTP / REST
-┌───────────────▼─────────────────────────┐
-│   Orquestador Backend (Python / FastAPI) │  ← Evalúa lógica, gestiona la cola
-└───────────────┬─────────────────────────┘
-                │ WebSocket
-┌───────────────▼─────────────────────────┐
-│   Agente Local (C# / .NET)              │  ← Ejecuta nodos en el SO
-└─────────────────────────────────────────┘
-```
-
----
 
 ## 1. Orquestación mediante Grafos Acíclicos Dirigidos (DAGs)
 
